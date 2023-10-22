@@ -5,3 +5,6 @@ https://www.notion.so/9fc33b1b4efd484f90d9369fb61af0ce?v=23dd52c8d2e848ad870706b
 박찬호 : tareun3406
 
 정희제 : jhj931012
+
+국동호 : gukdongho
+
