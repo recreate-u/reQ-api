@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://3.37.36.23:7336/recreateu
+    username: requser
+    password: req1234
+    driver-class-name: org.mariadb.jdbc.Driver
