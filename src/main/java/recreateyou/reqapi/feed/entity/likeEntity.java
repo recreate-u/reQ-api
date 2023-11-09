@@ -1,11 +1,11 @@
-package recreateyou.reqapi.like.entity;
+package recreateyou.reqapi.feed.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import recreateyou.reqapi.feed.compositeKey.LikeCompositeId;
 
 import java.util.Date;
 
@@ -15,11 +15,11 @@ import java.util.Date;
 @Builder
 @Table(name = "LIKE")
 @Entity
-public class likeInfo {
+public class likeEntity {
 
-    private String userId;
+    @EmbeddedId
+    private LikeCompositeId likeCompositeId;
 
-    private long feedSeq;
-
+    @Column(name = "LIKED_DATE")
     private Date likedDate;
 }

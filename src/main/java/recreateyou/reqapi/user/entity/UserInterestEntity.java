@@ -1,31 +1,25 @@
-package recreateyou.reqapi.profile.entity;
+package recreateyou.reqapi.user.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.query.sql.internal.ParameterRecognizerImpl;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "PROFILE_ATTACHMENT")
+@Table(name = "USER_INTEREST")
 @Entity
-public class profileAttachment {
+public class UserInterestEntity {
 
-    @Id
+    @Column(name = "USER_ID")
     private String userId;
 
-    @Column
-    private String fileName;
-
-    @Column
-    private String path;
-
-    @Column
-    private String fileText;
+    @Column(name = "INTEREST_NAME")
+    private String interestName;
 }

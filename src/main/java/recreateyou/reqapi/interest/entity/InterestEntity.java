@@ -7,13 +7,16 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "USER_INFO")
+@Table(name = "INTEREST")
 @Entity
-public class InterestInfo {
+public class InterestEntity {
 
     @Id
-    private String interstName;
+    @Column(name = "INTEREST_NAME", nullable = false)
+    private String interestName;
 
-    @Column
+    @Column(name = "USER_COUNT")
     private long userCount;
+
+
 }

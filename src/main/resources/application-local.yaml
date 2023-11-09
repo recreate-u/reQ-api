@@ -1,0 +1,36 @@
+#server:
+#  port: 7336
+#  servlet:
+#    context-path: /
+#    encoding:
+#      charset: UTF-8
+#      enabled: true
+#      force: true
+
+server:
+  port: 7336
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+#    url: jdbc:mariadb://3.37.36.23:7336/recreateu
+    url: jdbc:mariadb://localhost:3307/recreateu;databaseName=recreateu;
+    username: root
+    password: jhj!236884400
+    jpa:
+      hibernate:
+        ddl-auto: create-drop
+        dialect: org.hibernate.dialect.MariaDBDialect
+      show-sql: true
+
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
