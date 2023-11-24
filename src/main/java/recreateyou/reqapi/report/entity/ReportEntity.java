@@ -16,8 +16,8 @@ public class ReportEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reportSeq;
 
-    @Column(name = "KEY", length = 256)
-    private String key;
+    @Column(name = "REPORT_REASON", length = 256)
+    private String reportReason;
 
     @Column(name = "CONTEXT", length = 1000)
     private String context;

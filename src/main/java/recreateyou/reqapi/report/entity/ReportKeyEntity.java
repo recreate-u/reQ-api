@@ -15,5 +15,5 @@ import lombok.*;
 public class ReportKeyEntity {
 
     @Id
-    private String key;
+    private String reportReason;
 }
