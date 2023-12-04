@@ -1,11 +1,11 @@
-package recreateyou.reqapi.user.entity;
+package recreateyou.reqapi.auth.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import recreateyou.reqapi.user.Enum.Role;
+import recreateyou.reqapi.auth.Enum.Role;
 
 @Getter
 @Builder
