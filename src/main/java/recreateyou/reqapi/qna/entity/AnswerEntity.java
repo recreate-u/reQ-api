@@ -1,4 +1,4 @@
-package recreateyou.reqapi.Qna.entity;
+package recreateyou.reqapi.qna.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
