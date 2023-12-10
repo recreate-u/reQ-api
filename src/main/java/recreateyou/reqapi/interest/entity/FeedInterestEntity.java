@@ -2,6 +2,7 @@ package recreateyou.reqapi.interest.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import recreateyou.reqapi.feed.entity.FeedEntity;
 
 @Getter
 @Setter
@@ -10,12 +11,16 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "FEED_INTEREST")
+@IdClass(InterestCompositeId.class)
 public class FeedInterestEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long feedSeq;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "FEED_SEQ")
+    private FeedEntity feedSeq;
 
-    @Column(name = "INTEREST_NAME", length = 30)
-    private String interestName;
+    @Id
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "INTEREST_NAME")
+    private InterestEntity interestName;
 }

@@ -5,7 +5,6 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.print.attribute.standard.MediaSize;
 import java.util.Date;
 
 @Getter
@@ -15,11 +14,11 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "FEED")
-public class feedEntity {
+public class FeedEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long feed_seq;
+    private Long feedSeq;
 
     @Column(name = "USER_ID", length = 50)
     private String userId;
@@ -31,15 +30,15 @@ public class feedEntity {
     private int likeCount;
 
     @Column(name="FIXED_NUM")
-    private int fixed_num;
+    private int fixedNum;
 
     @Column(name = "REG_DATE")
     @CreationTimestamp
-    private Date reg_date;
+    private Date regDate;
 
     @Column(name = "UPDATE_DATE")
     @UpdateTimestamp
-    private Date upt_date;
+    private Date updDate;
 
     @Column(name = "DISCLOSURE_TYPE", length = 10)
     private String disclosureType;

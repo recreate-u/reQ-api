@@ -1,4 +1,4 @@
-package recreateyou.reqapi.coment.entity;
+package recreateyou.reqapi.comment.entity;
 
 import jakarta.persistence.*;
 import jdk.jfr.Timestamp;
@@ -12,12 +12,12 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "COMENT")
-public class comentEntity {
+@Table(name = "COMMENT")
+public class CommentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int comentSeq;
+    private int commentSeq;
 
     @Column(name = "FEED_SEQ")
     private int feedSeq;

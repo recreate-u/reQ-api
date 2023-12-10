@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "ATTACHMENT")
-public class attachmentEntity {
+public class AttachmentEntity {
 
     @Id
     @GeneratedValue

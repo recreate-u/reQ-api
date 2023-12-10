@@ -1,10 +1,8 @@
 package recreateyou.reqapi.interest.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+import recreateyou.reqapi.user.entity.UserEntity;
 
 @Getter
 @Setter
@@ -13,12 +11,16 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "USER_INTEREST")
+@IdClass(InterestCompositeId.class)
 public class UserInterestEntity {
 
     @Id
-    @Column(name = "USER_ID", length = 20)
-    private String userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID")
+    private UserEntity userId;
 
-    @Column(name = "INTEREST_NAME", length = 30)
-    private String interestName;
+    @Id
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "INTEREST_NAME")
+    private InterestEntity interestName;
 }
