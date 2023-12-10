@@ -1,4 +1,4 @@
-package recreateyou.reqapi.Qna.entity;
+package recreateyou.reqapi.qna.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,12 +14,12 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "QUESTION")
-public class QuestionEntity {
+@Table(name = "ANSWER")
+public class AnswerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long questionSeq;
+    private Long answerSeq;
 
     @Column(name = "USER_ID", length = 20)
     private String userId;
