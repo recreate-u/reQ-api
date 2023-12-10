@@ -12,7 +12,6 @@ import lombok.*;
 @Table(name = "INTEREST")
 public class InterestEntity {
 
-    @Id
     @Column(name = "INTEREST_NAME", length = 30)
     private String interestName;
 

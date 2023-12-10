@@ -1,10 +1,9 @@
-package recreateyou.reqapi.qna.entity;
+package recreateyou.reqapi.Qna.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import recreateyou.reqapi.user.entity.UserEntity;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -16,17 +15,14 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "ANSWER")
-@IdClass(AnswerCompositeId.class)
 public class AnswerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long answerSeq;
 
-    @Id
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID")
-    private UserEntity userId;
+    @Column(name = "USER_ID", length = 20)
+    private String userId;
 
     @Column(name = "TITLE", length = 100)
     private String title;
