@@ -1,4 +1,4 @@
-package recreateyou.reqapi.feed_interest.entity;
+package recreateyou.reqapi.interest.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,11 +10,11 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "FEED_INTEREST")
-public class feed_interestEntity {
+public class FeedInterestEntity {
 
     @Id
-    @GeneratedValue
-    private int feed_seq;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long feedSeq;
 
     @Column(name = "INTEREST_NAME", length = 30)
     private String interestName;

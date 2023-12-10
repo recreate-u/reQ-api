@@ -14,12 +14,12 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Answer")
-public class answer {
+@Table(name = "QUESTION")
+public class QuestionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long answerSeq;
+    private Long questionSeq;
 
     @Column(name = "USER_ID", length = 20)
     private String userId;

@@ -9,13 +9,12 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Interest")
+@Table(name = "INTEREST")
 public class InterestEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long interestSeq;
 
     @Column(name = "INTEREST_NAME", length = 30)
     private String interestName;
+
+    @Column(name = "USER_COUNT")
+    private Long userCount;
 }
