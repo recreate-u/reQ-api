@@ -4,15 +4,11 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import recreateyou.reqapi.auth.entity.AuthEntity;
-import recreateyou.reqapi.notice.entity.NoticeEntity;
-import recreateyou.reqapi.user.enums.Gender;
-import recreateyou.reqapi.user.vo.UserRequestVO;
-import recreateyou.reqapi.user.vo.UserResponseVO;
+import recreateyou.reqapi.user.Enum.Gender;
 
+import java.sql.Date;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -47,7 +43,7 @@ public class UserEntity {
     private String emailDomain;     // 이메일 도메인
 
     @Column(name = "EMAIL_CHECK")
-    private Boolean emailCheck;      // 이메일 인증 유무
+    private String emailCheck;      // 이메일 인증 유무
 
     @Column(name = "ZIP_CODE", length = 10)
     private String zipCode;         // 우편번호
@@ -57,18 +53,18 @@ public class UserEntity {
     private Gender gender;          // 성별 Gender.F = "F" = 여자, Gender.M = "M" = 남자
 
     @Column(name = "FOLLOWER_COUNT")
-    private Long followerCount;     // 팔로워 수
+    private long followerCount;     // 팔로워 수
 
     @Column(name = "USER_REG_DATE")
     @CreationTimestamp              // insert 쿼리 실행시 자동 생성
-    private LocalDateTime userRegDate;       // 가입일자
+    private Date userRegDate;       // 가입일자
 
     @Column(name = "USER_UPD_DATE")
     @UpdateTimestamp                // update 쿼리 실행시 자동 생성
-    private LocalDateTime userUpdDate;  // 최근수정일자
+    private Timestamp userUpdDate;  // 최근수정일자
 
     @Column(name = "DELETED")
-    private Boolean deleted;        // 삭제 유무 true = 삭제됨
+    private boolean deleted;        // 삭제 유무 true = 삭제됨
 
 
 
@@ -84,28 +80,4 @@ public class UserEntity {
 
     @OneToOne(mappedBy = "userId")
     private ProfileAttachmentEntity profileAttachment;
-
-    @OneToMany(mappedBy = "userId")
-    private List<NoticeEntity> noticeList;
-
-
-    public UserEntity(String userId,UserRequestVO requestVO, PasswordEncoder passwordEncoder) {
-        this.userId = userId;
-        this.userPw = passwordEncoder.encode(requestVO.userPW());
-        this.userName = requestVO.userName();
-        this.birth = requestVO.birth();
-        this.phoneNumber = requestVO.phoneNumber();
-        this.emailId = requestVO.emailId();
-        this.emailDomain = requestVO.emailDomain();
-        this.emailCheck = false;
-        this.zipCode = requestVO.zipCode();
-        this.gender = requestVO.gender();
-    }
-
-    public UserResponseVO toResponseVo() {
-        return new UserResponseVO(this.getUserId(), this.getUserName(), this.getBirth(), this.getPhoneNumber(),
-                this.getEmailId(), this.getEmailDomain(), this.getEmailCheck(),
-                this.getZipCode(), this.getGender(), this.getFollowerCount(),
-                this.getUserRegDate(), this.getUserUpdDate(), this.getDeleted());
-    }
 }

@@ -17,6 +17,7 @@ import java.util.Date;
 public class FeedEntity {
 
     @Id
+    @Column(name = "FEED_SEQ")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long feedSeq;
 
