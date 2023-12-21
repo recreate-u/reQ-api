@@ -16,7 +16,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "ANSWER")
-@IdClass(qnaCompositeId.class)
+@IdClass(AnswerCompositeId.class)
 public class AnswerEntity {
 
     @Id

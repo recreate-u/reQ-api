@@ -11,7 +11,7 @@ import recreateyou.reqapi.feed.entity.FeedEntity;
 @AllArgsConstructor
 @Entity
 @Table(name = "FEED_INTEREST")
-@IdClass(InterestCompositeId.class)
+@IdClass(FeedInterestCompositeId.class)
 public class FeedInterestEntity {
 
     @Id
