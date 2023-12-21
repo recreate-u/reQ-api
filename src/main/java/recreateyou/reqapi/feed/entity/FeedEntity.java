@@ -13,7 +13,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "FEED")
+@Table(
+        name = "FEED",
+        uniqueConstraints = {@UniqueConstraint(name = "FIXED_FEED", columnNames = {"USER_ID", "FIXED_NUM"})}
+)
 public class FeedEntity {
 
     @Id
