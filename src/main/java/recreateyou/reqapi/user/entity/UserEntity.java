@@ -4,10 +4,12 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import recreateyou.reqapi.auth.entity.AuthEntity;
 import recreateyou.reqapi.user.Enum.Gender;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Getter
 @Setter
@@ -63,4 +65,19 @@ public class UserEntity {
 
     @Column(name = "DELETED")
     private boolean deleted;        // 삭제 유무 true = 삭제됨
+
+
+
+    // ------------------------- 연관 관계 설정 ------------------------- //
+    @OneToMany(mappedBy = "userFollower", fetch = FetchType.LAZY)   // 팔로우 대상 목록
+    private List<FollowEntity> followList;
+
+    @OneToMany(mappedBy = "userFollow", fetch = FetchType.LAZY)     // 팔로워 목록
+    private List<FollowEntity> followerList;
+
+    @OneToMany(mappedBy = "userId", fetch = FetchType.LAZY)
+    private List<AuthEntity> authList;
+
+    @OneToOne(mappedBy = "userId")
+    private ProfileAttachmentEntity profileAttachment;
 }
