@@ -2,6 +2,10 @@ package recreateyou.reqapi.report.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import recreateyou.reqapi.feed.entity.FeedEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,10 +20,13 @@ public class ReportEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reportSeq;
 
-    @Column(name = "REPORT_REASON", length = 256)
-    private String reportReason;
-
     @Column(name = "CONTEXT", length = 1000)
     private String context;
 
+    @JoinColumn(name = "FEED_SEQ")
+    @ManyToOne
+    private FeedEntity feedSeq;
+
+    @OneToMany(mappedBy = "reportReason")
+    List<ReportKeyEntity> ReportReasons = new ArrayList<>();
 }

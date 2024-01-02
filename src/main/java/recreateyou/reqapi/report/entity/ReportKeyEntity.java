@@ -1,8 +1,6 @@
 package recreateyou.reqapi.report.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -15,5 +13,7 @@ import lombok.*;
 public class ReportKeyEntity {
 
     @Id
-    private String reportReason;
+    @JoinColumn
+    @ManyToOne
+    private ReportEntity reportReasons;
 }
