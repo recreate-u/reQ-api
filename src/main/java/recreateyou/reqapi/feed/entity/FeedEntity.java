@@ -4,8 +4,11 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import recreateyou.reqapi.report.entity.ReportEntity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -50,4 +53,6 @@ public class FeedEntity {
     @Column(name = "REPORT_COUNT")
     private int reportCount;
 
+    @OneToMany(mappedBy = "feedSeq")
+    List<ReportEntity> reports = new ArrayList<>();
 }

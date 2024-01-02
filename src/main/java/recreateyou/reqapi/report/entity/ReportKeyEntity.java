@@ -13,7 +13,7 @@ import lombok.*;
 public class ReportKeyEntity {
 
     @Id
-    @JoinColumn(name = "REPORT_REASON")
+    @JoinColumn
     @ManyToOne
     private ReportEntity reportReasons;
 }
