@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import recreateyou.reqapi.feed.entity.FeedEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -28,5 +27,5 @@ public class ReportEntity {
     private FeedEntity feedSeq;
 
     @OneToMany(mappedBy = "reportReason")
-    List<ReportKeyEntity> ReportReasons = new ArrayList<>();
+    List<ReportKeyEntity> ReportReasons;
 }
