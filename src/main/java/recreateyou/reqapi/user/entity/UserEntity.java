@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import recreateyou.reqapi.auth.entity.AuthEntity;
+import recreateyou.reqapi.notice.entity.NoticeEntity;
 import recreateyou.reqapi.user.Enum.Gender;
 
 import java.sql.Date;
@@ -80,4 +81,7 @@ public class UserEntity {
 
     @OneToOne(mappedBy = "userId")
     private ProfileAttachmentEntity profileAttachment;
+
+    @OneToMany(mappedBy = "userId")
+    private List<NoticeEntity> noticeList;
 }
