@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import recreateyou.reqapi.user.entity.UserEntity;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -19,10 +20,12 @@ public class NoticeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "NOTICE_SEQ")
     private Long noticeSeq;
 
-    @Column(name = "USER_ID", length = 20)
-    private String userId;
+    @JoinColumn(name = "USER_ID")
+    @ManyToOne
+    private UserEntity userId;
 
     @Column(name = "TITLE", length = 100)
     private String title;
