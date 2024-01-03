@@ -17,6 +17,7 @@ public class ReportEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "REPORT_SEQ")
     private Long reportSeq;
 
     @Column(name = "CONTEXT", length = 1000)
