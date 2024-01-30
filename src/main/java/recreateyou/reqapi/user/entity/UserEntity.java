@@ -6,7 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import recreateyou.reqapi.auth.entity.AuthEntity;
 import recreateyou.reqapi.notice.entity.NoticeEntity;
-import recreateyou.reqapi.user.Enum.Gender;
+import recreateyou.reqapi.user.enums.Gender;
 
 import java.sql.Date;
 import java.sql.Timestamp;

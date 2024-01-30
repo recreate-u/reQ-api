@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import recreateyou.reqapi.auth.Enum.Role;
+import recreateyou.reqapi.auth.enums.Role;
 
 @Getter
 @Builder
