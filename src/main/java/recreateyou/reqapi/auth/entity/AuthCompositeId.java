@@ -2,10 +2,13 @@ package recreateyou.reqapi.auth.entity;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import lombok.AllArgsConstructor;
 import recreateyou.reqapi.auth.enums.Role;
 
 import java.io.Serializable;
 
+@AllArgsConstructor
+@SuppressWarnings("unused")
 public class AuthCompositeId implements Serializable {
 
     private String userId;
