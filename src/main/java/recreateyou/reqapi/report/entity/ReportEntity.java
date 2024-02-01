@@ -27,6 +27,6 @@ public class ReportEntity {
     @ManyToOne
     private FeedEntity feedSeq;
 
-    @OneToMany(mappedBy = "reportReason")
+    @OneToMany(mappedBy = "reportReasons")
     List<ReportKeyEntity> ReportReasons;
 }
