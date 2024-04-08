@@ -19,13 +19,13 @@ public class NoticeController {
     private final NoticeService noticeService;
 
     @PostMapping("/{notice-seq}")
-    public void registerNotice(@PathVariable("notice-seq")String noticeSeq, @RequestBody NoticeRequestVO noticeRequestVO){
+    public void registerNotice(@PathVariable("notice-seq") Long noticeSeq, @RequestBody NoticeRequestVO noticeRequestVO){
         noticeService.registerNotice(noticeSeq, noticeRequestVO);
     }
 
     // 공지 개별로 확인
     @GetMapping("/{notice-seq}")
-    public NoticeResponseVO getNotice(@PathVariable("notice-seq") String noticeSeq){
+    public NoticeResponseVO getNotice(@PathVariable("notice-seq") Long noticeSeq){
         return noticeService.getNotice(noticeSeq);
     }
 
@@ -36,12 +36,12 @@ public class NoticeController {
     }
 
     @PatchMapping("/{notice-seq}")
-    public void patchNotice(@PathVariable("notice-seq") String noticeSeq, @RequestBody NoticeRequestVO noticeRequestVO){
+    public void patchNotice(@PathVariable("notice-seq") Long noticeSeq, @RequestBody NoticeRequestVO noticeRequestVO){
         noticeService.patchNotice(noticeSeq, noticeRequestVO);
     }
 
     @DeleteMapping("/{notice-seq}")
-    public void deleteNotice(@PathVariable("notice-seq") String noticeSeq){
+    public void deleteNotice(@PathVariable("notice-seq") Long noticeSeq){
         noticeService.deleteNotice(noticeSeq);
     }
 }

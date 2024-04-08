@@ -43,8 +43,8 @@ public class NoticeEntity {
     @UpdateTimestamp
     private LocalDateTime updDate;
 
-    public NoticeEntity(String noticeSeq, NoticeRequestVO noticeRequestVO){
-        this.noticeSeq = Long.valueOf(noticeRequestVO.noticeSeq());
+    public NoticeEntity(Long noticeSeq, NoticeRequestVO noticeRequestVO){
+        this.noticeSeq = noticeRequestVO.noticeSeq();
         this.userId = noticeRequestVO.userId();
         this.title = noticeRequestVO.title();
         this.context = noticeRequestVO.context();
