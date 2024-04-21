@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import recreateyou.reqapi.qna.entity.QuestionEntity;
 
 @Repository
-public interface QnaRepository extends JpaRepository<QuestionEntity, Long> {
+public interface QuestionRepository extends JpaRepository<QuestionEntity, Long> {
 
 }

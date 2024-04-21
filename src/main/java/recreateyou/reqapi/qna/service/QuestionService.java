@@ -10,29 +10,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import lombok.RequiredArgsConstructor;
 import recreateyou.reqapi.qna.entity.QuestionEntity;
-import recreateyou.reqapi.qna.repository.QnaRepository;
+import recreateyou.reqapi.qna.repository.QuestionRepository;
 import recreateyou.reqapi.qna.vo.QuestionRequestVO;
 import recreateyou.reqapi.qna.vo.QuestionResponseVO;
 
 @Transactional
 @Service
 @RequiredArgsConstructor
-public class QnaService {
+public class QuestionService {
 
-    private final QnaRepository qnaRepository;
+    private final QuestionRepository questionRepository;
 
     public void registerQuestion(Long questionSeq, QuestionRequestVO questionRequestVO) {
-        qnaRepository.save(new QuestionEntity(questionSeq, questionRequestVO));
+        questionRepository.save(new QuestionEntity(questionSeq, questionRequestVO));
     }
 
     public QuestionResponseVO getQuestion(@PathVariable("question-seq") Long questionSeq) {
-        Optional<QuestionEntity> findQuestion = qnaRepository.findById(questionSeq);
+        Optional<QuestionEntity> findQuestion = questionRepository.findById(questionSeq);
         QuestionEntity questionEntity = findQuestion.orElseThrow(() -> new RuntimeException("등록된 질문이 없습니다."));
         return new QuestionEntity().toResponseVO();
     }
 
     public List<QuestionResponseVO> getAllQuestion() {
-        List<QuestionEntity> questionEntityList = qnaRepository.findAll();
+        List<QuestionEntity> questionEntityList = questionRepository.findAll();
         List<QuestionResponseVO> vos = new ArrayList<>();
         for (QuestionEntity entity : questionEntityList) {
             vos.add(new QuestionResponseVO(entity.getQuestionSeq(), entity.getUserId(), entity.getTitle(),
@@ -42,17 +42,17 @@ public class QnaService {
     }
 
     public void patchQuestion(Long questionSeq, QuestionRequestVO questionRequestVO) {
-        QuestionEntity existingQuestion = qnaRepository.findById(questionSeq)
+        QuestionEntity existingQuestion = questionRepository.findById(questionSeq)
                 .orElseThrow(() -> new RuntimeException("해당 질문을 찾을 수 없습니다: " + questionSeq));
 
         existingQuestion.setTitle(questionRequestVO.title());
         existingQuestion.setContext(questionRequestVO.context());
 
-        qnaRepository.save(existingQuestion);
+        questionRepository.save(existingQuestion);
     }
 
     public void deleteQuestion(@PathVariable("question-seq") Long questionSeq) {
-        qnaRepository.deleteById(questionSeq);
+        questionRepository.deleteById(questionSeq);
     }
 
 }
