@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+<<<<<<< HEAD
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,6 +25,17 @@ import lombok.Setter;
 import recreateyou.reqapi.qna.vo.QuestionRequestVO;
 import recreateyou.reqapi.qna.vo.QuestionResponseVO;
 import recreateyou.reqapi.user.entity.UserEntity;
+=======
+
+import recreateyou.reqapi.notice.vo.NoticeResponseVO;
+import recreateyou.reqapi.qna.vo.QuestionRequestVO;
+import recreateyou.reqapi.qna.vo.QuestionResponseVO;
+import recreateyou.reqapi.user.entity.UserEntity;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.Date;
+>>>>>>> 6c9de38e5980bf2ddf30165d7105e0301fd8d629
 
 @Getter
 @Setter

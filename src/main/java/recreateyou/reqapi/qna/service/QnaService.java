@@ -1,6 +1,9 @@
 package recreateyou.reqapi.qna.service;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6c9de38e5980bf2ddf30165d7105e0301fd8d629
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -56,10 +59,13 @@ public class QnaService {
 		qnaRepository.deleteById(questionSeq);
 	}
 
+<<<<<<< HEAD
 =======
 import org.springframework.stereotype.Service;
 
 @Service
 public class QnaService {
 >>>>>>> 2d4ca457b90285a00fc455f6edc4ec95a02e0c46
+=======
+>>>>>>> 6c9de38e5980bf2ddf30165d7105e0301fd8d629
 }

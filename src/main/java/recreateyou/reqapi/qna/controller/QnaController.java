@@ -1,6 +1,5 @@
 package recreateyou.reqapi.qna.controller;
 
-<<<<<<< HEAD
 import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -50,10 +49,4 @@ public class QnaController {
 		qnaService.deleteQuestion(questionSeq);
 	}
 
-=======
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-public class QnaController {
->>>>>>> 2d4ca457b90285a00fc455f6edc4ec95a02e0c46
 }
