@@ -11,7 +11,7 @@ import java.util.Date;
 
 public record NoticeRequestVO (
 
-    @NonNull Long noticeSeq,
+    @NonNull String noticeSeq,
     @NonNull String userId,
     @NonNull String title,
     @Nullable String context

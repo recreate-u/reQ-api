@@ -20,11 +20,11 @@ public class NoticeService {
 
     private final NoticeRepository noticeRepository;
 
-    public void registerNotice(Long noticeSeq, NoticeRequestVO noticeRequestVO){
+    public void registerNotice(String noticeSeq, NoticeRequestVO noticeRequestVO){
         noticeRepository.save(new NoticeEntity(noticeSeq, noticeRequestVO));
     }
 
-    public NoticeResponseVO getNotice(Long noticeSeq){
+    public NoticeResponseVO getNotice(@PathVariable("notice-seq") String noticeSeq){
         Optional<NoticeEntity> findNotice = noticeRepository.findById(noticeSeq);
         NoticeEntity noticeEntity = findNotice.orElseThrow(() -> new RuntimeException("공지사항 없음"));
         return new NoticeEntity().toResponseVO();
@@ -39,11 +39,11 @@ public class NoticeService {
         return vos;
     }
 
-    public void patchNotice(Long noticeSeq, NoticeRequestVO noticeRequestVO){
+    public void patchNotice(@PathVariable("notice-seq") String noticeSeq, NoticeRequestVO noticeRequestVO){
         noticeRepository.save(new NoticeEntity(noticeSeq, noticeRequestVO));
     }
 
-    public void deleteNotice(Long noticeSeq){
+    public void deleteNotice(@PathVariable("notice-seq") String noticeSeq){
         noticeRepository.deleteById(noticeSeq);
     }
 }
