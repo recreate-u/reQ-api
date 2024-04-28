@@ -27,9 +27,9 @@ public class ReportEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private FeedEntity feedSeq;
 
-    //@ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "REPORT_REASONS_SEQ")
-//    private ReportReasonEntity reportReason;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "REPORT_REASONS_SEQ")
+    private ReportReasonEntity reportReason;
 
     public ReportEntity(Long reportSeq, ReportRequestVO reportRequestVO){
         this.reportSeq = reportRequestVO.reportSeq();
