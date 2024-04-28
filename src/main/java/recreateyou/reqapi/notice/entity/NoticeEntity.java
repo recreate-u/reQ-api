@@ -6,10 +6,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import recreateyou.reqapi.notice.vo.NoticeRequestVO;
 import recreateyou.reqapi.notice.vo.NoticeResponseVO;
+import recreateyou.reqapi.user.entity.UserEntity;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -27,7 +26,7 @@ public class NoticeEntity {
 
     @JoinColumn(name = "USER_ID")
     @ManyToOne
-    private @NonNull String userId;
+    private UserEntity userId;
 
     @Column(name = "TITLE", length = 100)
     private String title;
@@ -43,7 +42,7 @@ public class NoticeEntity {
     @UpdateTimestamp
     private LocalDateTime updDate;
 
-    public NoticeEntity(String noticeSeq, NoticeRequestVO noticeRequestVO){
+    public NoticeEntity(Long noticeSeq, NoticeRequestVO noticeRequestVO){
         this.noticeSeq = Long.valueOf(noticeRequestVO.noticeSeq());
         this.userId = noticeRequestVO.userId();
         this.title = noticeRequestVO.title();

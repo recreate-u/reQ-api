@@ -3,13 +3,13 @@ package recreateyou.reqapi.report.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import recreateyou.reqapi.feed.entity.FeedEntity;
-
-import java.util.List;
+import recreateyou.reqapi.report.vo.ReportRequestVO;
+import recreateyou.reqapi.report.vo.ReportResponseVO;
 
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @AllArgsConstructor
 @Entity
 @Table(name = "REPORT")
@@ -24,9 +24,19 @@ public class ReportEntity {
     private String context;
 
     @JoinColumn(name = "FEED_SEQ")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private FeedEntity feedSeq;
 
-    @OneToMany(mappedBy = "reportReasons")
-    List<ReportKeyEntity> ReportReasons;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "REPORT_REASONS_SEQ")
+    private ReportReasonEntity reportReason;
+
+    public ReportEntity(Long reportSeq, ReportRequestVO reportRequestVO){
+        this.reportSeq = reportRequestVO.reportSeq();
+        this.context = reportRequestVO.context();
+    }
+
+    public ReportResponseVO toResponseVO(){
+        return new ReportResponseVO(this.getReportSeq(), this.getContext());
+    }
 }
