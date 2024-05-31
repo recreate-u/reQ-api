@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import recreateyou.reqapi.feed.vo.FeedVO;
 import recreateyou.reqapi.report.entity.ReportEntity;
+import recreateyou.reqapi.user.entity.UserEntity;
 
 import java.util.Date;
 import java.util.List;
@@ -26,8 +28,9 @@ public class FeedEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long feedSeq;
 
-    @Column(name = "USER_ID", length = 50)
-    private String userId;
+    @JoinColumn(name = "USER_ID")
+    @ManyToOne
+    private UserEntity userId;
 
     @Column(name = "TEXT_CONTENT")
     private String textContent;
@@ -54,4 +57,14 @@ public class FeedEntity {
 
     @OneToMany(mappedBy = "feedSeq")
     List<ReportEntity> reports;
+
+    public FeedEntity(Long feedSeq, FeedVO feedVO){
+        this.feedSeq = feedSeq;
+        this.userId = feedVO.userId();
+        this.textContent = feedVO.textContent();
+    }
+
+    public FeedVO toResponseVO(){
+        return null;
+    }
 }
