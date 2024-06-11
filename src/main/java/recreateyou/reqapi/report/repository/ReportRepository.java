@@ -10,6 +10,6 @@ import recreateyou.reqapi.user.entity.UserEntity;
 @Repository
 public interface ReportRepository extends JpaRepository<ReportEntity, Long> {
 
-    @Query(value = "SELECT COUNT(*) FROM REPORT WHERE FEED_SEQ = :feedSeq", nativeQuery = true)
+    @Query(value = "SELECT COUNT(re) FROM ReportEntity re WHERE re.feedSeq = :feedSeq", nativeQuery = false)
     long countByFeedSeq(@Param("feedSeq") Long feedSeq);
 }
