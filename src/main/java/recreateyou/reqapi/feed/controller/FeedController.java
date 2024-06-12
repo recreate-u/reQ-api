@@ -14,7 +14,7 @@ public class FeedController {
 
     private final FeedService feedService;
 
-    @GetMapping("{/feed-idx}")
+    @GetMapping("/{feed-idx}")
     public void registerFeed(@PathVariable("feed_idx") Long feedIdx, @RequestBody FeedVO feedVO) {
         feedService.registerFeed(feedIdx, feedVO);
     }
