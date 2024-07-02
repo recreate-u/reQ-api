@@ -3,7 +3,6 @@ package recreateyou.reqapi.report.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 
 @Getter
 @Setter

@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import recreateyou.reqapi.report.entity.ReportEntity;
-import recreateyou.reqapi.user.entity.UserEntity;
 
 @Repository
 public interface ReportRepository extends JpaRepository<ReportEntity, Long> {

@@ -1,11 +1,8 @@
 package recreateyou.reqapi.notice.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import recreateyou.reqapi.notice.entity.NoticeEntity;
 import recreateyou.reqapi.notice.service.NoticeService;
 import recreateyou.reqapi.notice.vo.NoticeRequestVO;
 import recreateyou.reqapi.notice.vo.NoticeResponseVO;
