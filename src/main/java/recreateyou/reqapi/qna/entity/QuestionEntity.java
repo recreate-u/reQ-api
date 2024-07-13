@@ -1,13 +1,29 @@
 package recreateyou.reqapi.qna.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
+import java.time.LocalDateTime;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import recreateyou.reqapi.user.entity.UserEntity;
 
-import java.sql.Timestamp;
-import java.util.Date;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
+import recreateyou.reqapi.qna.vo.QuestionRequestVO;
+import recreateyou.reqapi.qna.vo.QuestionResponseVO;
+import recreateyou.reqapi.user.entity.UserEntity;
 
 @Getter
 @Setter
@@ -19,26 +35,38 @@ import java.util.Date;
 @IdClass(QuestionCompositeId.class)
 public class QuestionEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long questionSeq;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "QUESTION_SEQ")
+	private Long questionSeq;
 
-    @Id
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID")
-    private UserEntity userId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "USER_ID")
+	private @NonNull UserEntity userId;
 
-    @Column(name = "TITLE", length = 100)
-    private String title;
+	@Column(name = "TITLE", length = 100)
+	private String title;
 
-    @Column(name = "CONTEXT", length = 1000)
-    private String context;
+	@Column(name = "CONTEXT", length = 1000)
+	private String context;
 
-    @Column(name = "REG_DATE")
-    @CreationTimestamp
-    private Date regDate;
+	@Column(name = "REG_DATE")
+	@CreationTimestamp
+	private LocalDateTime regDate;
 
-    @Column(name = "UPD_DATE")
-    @UpdateTimestamp
-    private Timestamp updDate;
+	@Column(name = "UPD_DATE")
+	@UpdateTimestamp
+	private LocalDateTime updDate;
+
+	public QuestionEntity(Long questionSeq, QuestionRequestVO questionRequestVO) {
+		this.questionSeq = questionRequestVO.questionSeq();
+		this.userId = questionRequestVO.userId();
+		this.title = questionRequestVO.title();
+		this.context = questionRequestVO.context();
+	}
+
+	public QuestionResponseVO toResponseVO() {
+		return new QuestionResponseVO(this.getQuestionSeq(), this.getUserId(), this.getTitle(), this.getContext(),
+				this.getRegDate(), this.getUpdDate());
+	}
 }
