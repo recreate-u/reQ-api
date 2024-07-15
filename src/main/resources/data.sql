@@ -1,0 +1,1 @@
+insert into role_list values ('USER');
