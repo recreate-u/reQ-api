@@ -5,11 +5,12 @@ import org.springframework.lang.Nullable;
 import recreateyou.reqapi.user.enums.Gender;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 public record UserRequestVO(
         @NonNull String userPW,
         @NonNull String userName,
-        @Nullable Timestamp birth,
+        @Nullable LocalDate birth,
         @Nullable String phoneNumber,
         @NonNull String emailId,
         @NonNull String emailDomain,

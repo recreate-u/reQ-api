@@ -3,13 +3,13 @@ package recreateyou.reqapi.user.vo;
 import recreateyou.reqapi.user.entity.UserEntity;
 import recreateyou.reqapi.user.enums.Gender;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public record UserResponseVO(
         String userId,
         String userName,
-        Timestamp birth,
+        LocalDate birth,
         String phoneNumber,
         String emailId,
         String emailDomain,

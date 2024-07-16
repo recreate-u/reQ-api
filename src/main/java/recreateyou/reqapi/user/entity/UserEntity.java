@@ -12,6 +12,7 @@ import recreateyou.reqapi.user.vo.UserRequestVO;
 import recreateyou.reqapi.user.vo.UserResponseVO;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class UserEntity {
     private String userName;        // 이름
 
     @Column(name = "BIRTH")
-    private Timestamp birth;        // 생년월일
+    private LocalDate birth;        // 생년월일
 
     @Column(name = "PHONE_NUMBER", length = 15)
     private String phoneNumber;     // 전화번호
