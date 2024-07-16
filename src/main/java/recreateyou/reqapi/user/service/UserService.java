@@ -12,8 +12,6 @@ import recreateyou.reqapi.user.repository.UserRepository;
 import recreateyou.reqapi.user.vo.UserRequestVO;
 import recreateyou.reqapi.user.vo.UserResponseVO;
 
-import java.util.Optional;
-
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -24,23 +22,23 @@ public class UserService {
     private final AuthService authService;
 
     public void joinUser(String userId, UserRequestVO userRequestVO) {
-        userRepository.save(new UserEntity(userId, userRequestVO, bCryptPasswordEncoder));
+        userRepository.save(UserEntity.of(userId, userRequestVO, bCryptPasswordEncoder));
         authService.grantRole(userId, Role.USER);
     }
 
     public UserResponseVO getUser(@PathVariable("user-id") String userId) {
-        Optional<UserEntity> foundUser = userRepository.findById(userId);
-        UserEntity userEntity = foundUser.orElseThrow(() -> new RuntimeException("회원 정보 없음"));
-        return userEntity.toResponseVo();
+        UserEntity userEntity = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("회원 정보 없음"));
+        return UserResponseVO.from(userEntity);
     }
 
     public void deleteUser(@PathVariable("user-id") String userId) {
-        Optional<UserEntity> foundUser = userRepository.findById(userId);
-        UserEntity userEntity = foundUser.orElseThrow(() -> new RuntimeException("회원 정보 없음"));
-        userEntity.setDeleted(true);
+        UserEntity userEntity = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("회원 정보 없음"));
+        userEntity.updateDeleted(true);
     }
 
     public void putUser(@PathVariable("user-id") String userId, UserRequestVO requestVO) {
-        userRepository.save(new UserEntity(userId, requestVO, bCryptPasswordEncoder));
+        userRepository.save(UserEntity.of(userId, requestVO, bCryptPasswordEncoder));
     }
 }

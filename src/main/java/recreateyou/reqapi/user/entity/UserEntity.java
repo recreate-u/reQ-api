@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -88,24 +87,22 @@ public class UserEntity {
     @OneToMany(mappedBy = "userId")
     private List<NoticeEntity> noticeList;
 
-
-    public UserEntity(String userId,UserRequestVO requestVO, PasswordEncoder passwordEncoder) {
-        this.userId = userId;
-        this.userPw = passwordEncoder.encode(requestVO.userPW());
-        this.userName = requestVO.userName();
-        this.birth = requestVO.birth();
-        this.phoneNumber = requestVO.phoneNumber();
-        this.emailId = requestVO.emailId();
-        this.emailDomain = requestVO.emailDomain();
-        this.emailCheck = false;
-        this.zipCode = requestVO.zipCode();
-        this.gender = requestVO.gender();
+    public static UserEntity of(String userId,UserRequestVO requestVO, PasswordEncoder passwordEncoder) {
+        return UserEntity.builder()
+                .userId(userId)
+                .userPw(passwordEncoder.encode(requestVO.userPW()))
+                .userName(requestVO.userName())
+                .birth(requestVO.birth())
+                .phoneNumber(requestVO.phoneNumber())
+                .emailId(requestVO.emailId())
+                .emailDomain(requestVO.emailDomain())
+                .emailCheck(false)
+                .zipCode(requestVO.zipCode())
+                .gender(requestVO.gender())
+                .build();
     }
 
-    public UserResponseVO toResponseVo() {
-        return new UserResponseVO(this.getUserId(), this.getUserName(), this.getBirth(), this.getPhoneNumber(),
-                this.getEmailId(), this.getEmailDomain(), this.getEmailCheck(),
-                this.getZipCode(), this.getGender(), this.getFollowerCount(),
-                this.getUserRegDate(), this.getUserUpdDate(), this.getDeleted());
+    public void updateDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }
