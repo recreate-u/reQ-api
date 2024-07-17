@@ -18,7 +18,7 @@ public record UserUpdateRequestVo(
         @Nullable String zipCode,
         @Nullable Gender gender
 ) {
-    public UserEntity toUserEntityWithIdAndPwEncode(String userId, PasswordEncoder passwordEncoder) {
+    public UserEntity toEntity(String userId, PasswordEncoder passwordEncoder) {
         return UserEntity.builder()
                 .userId(userId)
                 .userPw(passwordEncoder.encode(this.userPW))

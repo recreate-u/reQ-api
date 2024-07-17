@@ -19,7 +19,7 @@ public record UserCreateRequestVO(
         @Nullable String zipCode,
         @Nullable Gender gender
 ) {
-    public UserEntity toEntityWithPwEncode(PasswordEncoder passwordEncoder) {
+    public UserEntity toEntity(PasswordEncoder passwordEncoder) {
         return UserEntity.builder()
                 .userId(this.userId)
                 .userPw(passwordEncoder.encode(this.userPW))

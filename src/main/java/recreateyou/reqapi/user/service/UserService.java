@@ -22,7 +22,7 @@ public class UserService {
     private final AuthService authService;
 
     public void joinUser(UserCreateRequestVO userRequestVO) {
-        userRepository.save(userRequestVO.toEntityWithPwEncode(bCryptPasswordEncoder));
+        userRepository.save(userRequestVO.toEntity(bCryptPasswordEncoder));
         authService.grantRole(userRequestVO.userId(), Role.USER);
     }
 
@@ -39,6 +39,6 @@ public class UserService {
     }
 
     public void putUser(String userId, UserUpdateRequestVo requestVO) {
-        userRepository.save(requestVO.toUserEntityWithIdAndPwEncode(userId, bCryptPasswordEncoder));
+        userRepository.save(requestVO.toEntity(userId, bCryptPasswordEncoder));
     }
 }
