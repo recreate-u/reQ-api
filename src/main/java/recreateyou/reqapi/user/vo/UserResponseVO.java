@@ -1,11 +1,13 @@
 package recreateyou.reqapi.user.vo;
 
+import lombok.Builder;
 import recreateyou.reqapi.user.entity.UserEntity;
 import recreateyou.reqapi.user.enums.Gender;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Builder
 public record UserResponseVO(
         String userId,
         String userName,
@@ -22,9 +24,20 @@ public record UserResponseVO(
         Boolean deleted
 ) {
     public static UserResponseVO from(UserEntity entity) {
-        return new UserResponseVO(entity.getUserId(), entity.getUserName(), entity.getBirth(), entity.getPhoneNumber(),
-                entity.getEmailId(), entity.getEmailDomain(), entity.getEmailCheck(),
-                entity.getZipCode(), entity.getGender(), entity.getFollowerCount(),
-                entity.getUserRegDate(), entity.getUserUpdDate(), entity.getDeleted());
+        return UserResponseVO.builder()
+                .userId(entity.getUserId())
+                .userName(entity.getUserName())
+                .birth(entity.getBirth())
+                .phoneNumber(entity.getPhoneNumber())
+                .emailId(entity.getEmailId())
+                .emailDomain(entity.getEmailDomain())
+                .emailCheck(false)
+                .zipCode(entity.getZipCode())
+                .gender(entity.getGender())
+                .followerCount(entity.getFollowerCount())
+                .userRegDate(entity.getUserRegDate())
+                .userUpdDate(entity.getUserUpdDate())
+                .deleted(entity.getDeleted())
+                .build();
     }
 }
