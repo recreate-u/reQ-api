@@ -2,6 +2,7 @@ package recreateyou.reqapi.auth.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import recreateyou.reqapi.auth.entity.AuthCompositeId;
 import recreateyou.reqapi.auth.entity.AuthEntity;
 import recreateyou.reqapi.auth.entity.RoleListEntity;
@@ -11,6 +12,7 @@ import recreateyou.reqapi.user.entity.UserEntity;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class AuthService {
 
     private final AuthRepository authRepository;

@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,7 +12,7 @@ import lombok.*;
 public class ProfileAttachmentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long profileAttchmentSeq;
+    private long profileAttachmentSeq;
 
     @OneToOne
     private UserEntity userId;
