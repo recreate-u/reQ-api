@@ -4,19 +4,15 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import recreateyou.reqapi.auth.entity.AuthEntity;
 import recreateyou.reqapi.notice.entity.NoticeEntity;
 import recreateyou.reqapi.user.enums.Gender;
-import recreateyou.reqapi.user.vo.UserRequestVO;
-import recreateyou.reqapi.user.vo.UserResponseVO;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,7 +31,7 @@ public class UserEntity {
     private String userName;        // 이름
 
     @Column(name = "BIRTH")
-    private Timestamp birth;        // 생년월일
+    private LocalDate birth;        // 생년월일
 
     @Column(name = "PHONE_NUMBER", length = 15)
     private String phoneNumber;     // 전화번호
@@ -88,24 +84,7 @@ public class UserEntity {
     @OneToMany(mappedBy = "userId")
     private List<NoticeEntity> noticeList;
 
-
-    public UserEntity(String userId,UserRequestVO requestVO, PasswordEncoder passwordEncoder) {
-        this.userId = userId;
-        this.userPw = passwordEncoder.encode(requestVO.userPW());
-        this.userName = requestVO.userName();
-        this.birth = requestVO.birth();
-        this.phoneNumber = requestVO.phoneNumber();
-        this.emailId = requestVO.emailId();
-        this.emailDomain = requestVO.emailDomain();
-        this.emailCheck = false;
-        this.zipCode = requestVO.zipCode();
-        this.gender = requestVO.gender();
-    }
-
-    public UserResponseVO toResponseVo() {
-        return new UserResponseVO(this.getUserId(), this.getUserName(), this.getBirth(), this.getPhoneNumber(),
-                this.getEmailId(), this.getEmailDomain(), this.getEmailCheck(),
-                this.getZipCode(), this.getGender(), this.getFollowerCount(),
-                this.getUserRegDate(), this.getUserUpdDate(), this.getDeleted());
+    public void updateDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }
