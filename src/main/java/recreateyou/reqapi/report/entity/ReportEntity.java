@@ -31,11 +31,6 @@ public class ReportEntity {
     @JoinColumn(name = "REPORT_REASONS_SEQ")
     private ReportReasonEntity reportReason;
 
-    public ReportEntity(Long reportSeq, ReportCreateRequestVO reportCreateRequestVO){
-        this.reportSeq = reportCreateRequestVO.reportSeq();
-        this.context = reportCreateRequestVO.context();
-    }
-
     public ReportResponseVO toResponseVO(){
         return new ReportResponseVO(this.getReportSeq(), this.getContext());
     }
