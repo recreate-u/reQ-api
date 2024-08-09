@@ -1,11 +1,9 @@
 package recreateyou.reqapi.feed.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import recreateyou.reqapi.feed.service.FeedService;
 import recreateyou.reqapi.feed.vo.FeedVO;
-import recreateyou.reqapi.notice.vo.NoticeRequestVO;
 
 @RestController
 @RequiredArgsConstructor

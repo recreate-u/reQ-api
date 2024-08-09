@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import recreateyou.reqapi.report.entity.ReportEntity;
 import recreateyou.reqapi.report.repository.ReportRepository;
-import recreateyou.reqapi.report.vo.ReportRequestVO;
+import recreateyou.reqapi.report.vo.ReportCreateRequestVO;
 import recreateyou.reqapi.report.vo.ReportResponseVO;
 
 import java.util.Optional;
@@ -19,15 +19,15 @@ public class ReportService {
     private final ReportRepository reportRepository;
 
     // 신고 등록
-    public void registerReport(Long reportSeq, ReportRequestVO reportRequestVO){
-        reportRepository.save(new ReportEntity(reportSeq, reportRequestVO));
+    public void registerReport(Long reportSeq, ReportCreateRequestVO reportCreateRequestVO){
+        reportRepository.save(new ReportEntity(reportSeq, reportCreateRequestVO));
     }
 
     // 신고내용 조회
     public ReportResponseVO findReport(Long reportSeq){
         Optional<ReportEntity> findReport = reportRepository.findById(reportSeq);
         ReportEntity reportEntity = findReport.orElseThrow();
-        return new ReportEntity().toResponseVO();
+        return reportEntity.toResponseVO();
     }
 
     // 게시물 당 신고 횟수
@@ -36,10 +36,6 @@ public class ReportService {
         return countFeed;
 
     }
-
-//    public void patchReport(Long reportSeq, ReportRequestVO reportRequestVO){
-//        reportRepository.save(new ReportEntity(reportSeq, reportRequestVO));
-//    }
 
     // 신고 취소
     public void deleteReport(Long reportSeq){

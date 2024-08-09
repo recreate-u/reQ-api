@@ -4,8 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import recreateyou.reqapi.notice.vo.NoticeRequestVO;
+import recreateyou.reqapi.notice.vo.NoticeCreateRequestVO;
 import recreateyou.reqapi.notice.vo.NoticeResponseVO;
+import recreateyou.reqapi.notice.vo.NoticeUpdateRequestVO;
 import recreateyou.reqapi.user.entity.UserEntity;
 
 import java.time.LocalDateTime;
@@ -42,12 +43,6 @@ public class NoticeEntity {
     @UpdateTimestamp
     private LocalDateTime updDate;
 
-    public NoticeEntity(Long noticeSeq, NoticeRequestVO noticeRequestVO){
-        this.noticeSeq = Long.valueOf(noticeRequestVO.noticeSeq());
-        this.userId = noticeRequestVO.userId();
-        this.title = noticeRequestVO.title();
-        this.context = noticeRequestVO.context();
-    }
 
     public NoticeResponseVO toResponseVO(){
         return new NoticeResponseVO(this.getNoticeSeq(), this.getUserId(), this.getTitle(), this.getContext(), this.getRegDate(), this.getUpdDate() );

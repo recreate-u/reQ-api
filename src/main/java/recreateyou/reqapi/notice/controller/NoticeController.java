@@ -4,8 +4,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import recreateyou.reqapi.notice.service.NoticeService;
-import recreateyou.reqapi.notice.vo.NoticeRequestVO;
+import recreateyou.reqapi.notice.vo.NoticeCreateRequestVO;
 import recreateyou.reqapi.notice.vo.NoticeResponseVO;
+import recreateyou.reqapi.notice.vo.NoticeUpdateRequestVO;
 
 import java.util.List;
 
@@ -17,9 +18,8 @@ public class NoticeController {
     private final NoticeService noticeService;
 
     @Operation(tags = {"notice"}, summary = "공지등록")
-    @PostMapping("/{notice-seq}")
-    public void registerNotice(@PathVariable("notice-seq")Long noticeSeq, @RequestBody NoticeRequestVO noticeRequestVO){
-        noticeService.registerNotice(noticeSeq, noticeRequestVO);
+    public void registerNotice(@RequestBody NoticeCreateRequestVO noticeCreateRequestVO){
+        noticeService.registerNotice(noticeCreateRequestVO);
     }
 
     // 공지 개별로 확인
@@ -37,9 +37,9 @@ public class NoticeController {
     }
 
     @Operation(tags = {"notice"}, summary = "공지 수정")
-    @PatchMapping("/{notice-seq}")
-    public void patchNotice(@PathVariable("notice-seq") Long noticeSeq, @RequestBody NoticeRequestVO noticeRequestVO){
-        noticeService.patchNotice(noticeSeq, noticeRequestVO);
+    @PutMapping("/{notice-seq}")
+    public void putNotice(@PathVariable("notice-seq") Long noticeSeq, @RequestBody NoticeUpdateRequestVO noticeUpdateRequestVO){
+        noticeService.putNotice(noticeSeq, noticeUpdateRequestVO);
     }
 
     @Operation(tags = {"notice"}, summary = "공지 삭제")

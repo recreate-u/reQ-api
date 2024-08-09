@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import recreateyou.reqapi.report.service.ReportService;
-import recreateyou.reqapi.report.vo.ReportRequestVO;
+import recreateyou.reqapi.report.vo.ReportCreateRequestVO;
 import recreateyou.reqapi.report.vo.ReportResponseVO;
 
 @RestController
@@ -17,8 +17,8 @@ public class ReportController {
     // 신고 등록
     @Operation(tags = {"report"}, summary = "신고등록")
     @PostMapping("/{report-seq}")
-    public void registerReport(@PathVariable("report-seq")Long reportSeq, @RequestBody ReportRequestVO reportRequestVO){
-        reportService.registerReport(reportSeq, reportRequestVO);
+    public void registerReport(@PathVariable("report-seq")Long reportSeq, @RequestBody ReportCreateRequestVO reportCreateRequestVO){
+        reportService.registerReport(reportSeq, reportCreateRequestVO);
     }
 
     // 신고내용 조회

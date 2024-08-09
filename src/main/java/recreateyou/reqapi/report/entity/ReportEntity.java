@@ -3,7 +3,7 @@ package recreateyou.reqapi.report.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import recreateyou.reqapi.feed.entity.FeedEntity;
-import recreateyou.reqapi.report.vo.ReportRequestVO;
+import recreateyou.reqapi.report.vo.ReportCreateRequestVO;
 import recreateyou.reqapi.report.vo.ReportResponseVO;
 
 @Getter
@@ -31,9 +31,9 @@ public class ReportEntity {
     @JoinColumn(name = "REPORT_REASONS_SEQ")
     private ReportReasonEntity reportReason;
 
-    public ReportEntity(Long reportSeq, ReportRequestVO reportRequestVO){
-        this.reportSeq = reportRequestVO.reportSeq();
-        this.context = reportRequestVO.context();
+    public ReportEntity(Long reportSeq, ReportCreateRequestVO reportCreateRequestVO){
+        this.reportSeq = reportCreateRequestVO.reportSeq();
+        this.context = reportCreateRequestVO.context();
     }
 
     public ReportResponseVO toResponseVO(){
