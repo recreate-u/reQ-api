@@ -19,8 +19,8 @@ public class ReportService {
     private final ReportRepository reportRepository;
 
     // 신고 등록
-    public void registerReport(Long reportSeq, ReportCreateRequestVO reportCreateRequestVO){
-        reportRepository.save(new ReportEntity(reportSeq, reportCreateRequestVO));
+    public void registerReport(ReportCreateRequestVO reportCreateRequestVO){
+        reportRepository.save(reportCreateRequestVO.toEntity());
     }
 
     // 신고내용 조회

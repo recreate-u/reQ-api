@@ -17,8 +17,8 @@ public class ReportController {
     // 신고 등록
     @Operation(tags = {"report"}, summary = "신고등록")
     @PostMapping("/{report-seq}")
-    public void registerReport(@PathVariable("report-seq")Long reportSeq, @RequestBody ReportCreateRequestVO reportCreateRequestVO){
-        reportService.registerReport(reportSeq, reportCreateRequestVO);
+    public void registerReport(@RequestBody ReportCreateRequestVO reportCreateRequestVO){
+        reportService.registerReport(reportCreateRequestVO);
     }
 
     // 신고내용 조회
