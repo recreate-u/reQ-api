@@ -8,6 +8,7 @@ import recreateyou.reqapi.feed.vo.FeedVO;
 import recreateyou.reqapi.report.entity.ReportEntity;
 import recreateyou.reqapi.user.entity.UserEntity;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -43,11 +44,11 @@ public class FeedEntity {
 
     @Column(name = "REG_DATE")
     @CreationTimestamp
-    private Date regDate;
+    private LocalDateTime regDate;
 
     @Column(name = "UPDATE_DATE")
     @UpdateTimestamp
-    private Date updDate;
+    private LocalDateTime updDate;
 
     @Column(name = "DISCLOSURE_TYPE", length = 10)
     private String disclosureType;
@@ -59,7 +60,6 @@ public class FeedEntity {
     List<ReportEntity> reports;
 
     public FeedEntity(Long feedSeq, FeedVO feedVO){
-        this.feedSeq = feedSeq;
         this.userId = feedVO.userId();
         this.textContent = feedVO.textContent();
     }
